@@ -49,7 +49,7 @@ useEffect(() => {
                   text-black
                   px-6 py-3
                   rounded-lg
-                  font-medium
+                  font-bold
                   shadow-[0_0_30px_rgba(16,185,129,0.4)]
                   hover:shadow-[0_0_50px_rgba(16,185,129,0.6)]
                   transition
