@@ -1,128 +1,129 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { useState } from 'react';
+
+const faqs = [
+  {
+    q: 'Are these your set fees for social media marketing?',
+    a: 'No, our social media marketing packages are tailored to fit each client\'s unique situation. We provide a starting point, but our team will work closely with you to meet your specific goals and budget. Rest assured, we offer competitive rates to help businesses succeed on social media without breaking the bank.',
+  },
+  {
+    q: 'Do you have a minimum term for social media marketing?',
+    a: 'Yes. Social media growth takes time, so we ask for a minimum commitment of six months. This allows your business to experience the full impact of our tailored social media marketing services and achieve sustainable, long-term results.',
+  },
+  {
+    q: 'Do you provide 24/7 community management?',
+    a: 'No, we prioritise a healthy work-life balance to ensure our team is at its creative and strategic best. While we do not offer 24/7 community management, our team will always be available to respond promptly during business hours.',
+  },
+  {
+    q: 'Do you provide other digital services like website design?',
+    a: 'Social media is our core focus, but we work alongside trusted partners for website design and other digital needs. If you need a website, we can connect you with the right people and make sure everything works together as one cohesive brand.',
+  },
+  {
+    q: 'What is your refund policy?',
+    a: 'We do not offer refunds. Once your month begins, our team gets to work immediately on your strategy, content creation and scheduling. Those hours are fully committed to your brand from day one. We are confident in the quality of our work and are always available to address any concerns directly.',
+  },
+  {
+    q: 'What do I need to get started?',
+    a: 'Just reach out via WhatsApp. We will have a quick conversation about your business, your goals and the platforms that make the most sense for you. From there we handle everything, strategy, content, posting and management, so you can focus on running your business.',
+  },
+  {
+    q: 'Who will actually be working on my account?',
+    a: 'Seniors. Not juniors. Not interns. Zubaa is a boutique agency by design which means every strategy, every piece of content and every decision made about your account goes through experienced hands. You are never passed down the chain. That is the whole point of keeping our client list small.',
+  },
+  {
+    q: 'How long before I start seeing results?',
+    a: 'Six months is our minimum commitment and there is a reason for that. Social media is not a switch you flip. In the first 30 days you will see a consistent, professional presence go up. By month 2 and 3 engagement starts building and the right audience starts finding you. By month 4 to 6 that audience is warm enough to convert into real enquiries and revenue. Anyone promising results before that is selling you something that does not exist.',
+  },
+  {
+    q: 'How much of my time will this require?',
+    a: 'Very little on most days. After the initial onboarding where we learn your business, your main job is to respond to verification codes when platforms request them and give feedback on content within 48 hours. For clients who want to be the face of their brand or have a spokesperson on video, we make that as easy as possible. Every month we send a content calendar with clear briefs and a quick walkthrough so you can batch create your video content in one sitting. Beyond that we handle everything else so you can focus on running your business.',
+  },
+  {
+    q: 'Can I upgrade or downgrade my package?',
+    a: 'Yes. If your business needs change you can move between packages at the start of a new billing cycle. We will have that conversation with you directly and make sure the transition is seamless.',
+  },
+  {
+    q: 'How do you measure success?',
+    a: 'We track four things every month. Shares, because content worth sharing is content that is working. Profile visits, because the right people finding and checking your page means your content is reaching the right audience. Saves, because when people bookmark your content it means they trust what you are putting out. And DMs and enquiries, because that is the number that actually becomes revenue. Everything we do is pointed at those four metrics.',
+  },
+];
 
 export default function FAQ() {
-  const faqs = [
-    {
-      q: "How much does this cost? Do I take any risk?",
-      a: "You pay nothing upfront. We only profit if you do. All risk is on us—we invest our time, resources, and expertise, so you have zero financial exposure."
-    },
-    {
-      q: "Does this only work for creators?",
-      a: "Not at all. We work with creators, coaches, consultants, local businesses—anyone with a high-ticket offer or an audience ready to buy, whether that audience comes from organic reach, paid ads, or both."
-    },
-    {
-      q: "How is this different from other programs or agencies?",
-      a: "We build full systems, not just teach tactics. Your low-ticket offer, funnel, and backend are engineered to convert cold traffic into buyers, validated before launch."
-    },
-    {
-      q: "I already have a funnel—can I still work with you?",
-      a: "Yes. We can optimize and integrate your existing funnel or help map out a new one using our proven system."
-    },
-    {
-      q: "How many done-for-you spots are available?",
-      a: "Only one per month. We pick partners, not clients. If this month is full, you can apply for the next."
-    },
-    {
-      q: "What’s included in the done-for-you buildout?",
-      a: "We handle everything: low-ticket offer creation, funnel design, copy, email & SMS flows, call booking system, and ad strategy—so you focus on creating content."
-    },
-    {
-      q: "What results can I expect?",
-      a: "For creators without an offer, our done for you system helps monetize your audience while you focus on content. For established high-ticket programs, 5–10% of cold traffic typically buys the front-end offer, 50% of those book a call, and 3–5% ascend to your high-ticket program."
-    },
-    {
-      q: "How do you make sure the right buyers come in?",
-      a: "We work backward from your high-ticket offer. Using five proven front-end formats, we craft a low-ticket offer that attracts buyers most likely to ascend. No more chasing the wrong leads."
-    },
-    {
-      q: "How fast can I launch?",
-      a: "Your system goes live in 30 days—taking orders and booking calls within four weeks."
-    },
-    {
-      q: "What if I want to do it myself or with my team?",
-      a: "We can map out your funnel, bonuses, bumps, upsells, and flows using the same system our DFY clients get, so you implement it with your team."
-    },
-    {
-      q: "Will this work for my audience or niche?",
-      a: "Everything we deliver is done-for-you and personalized to your offer. Not generic, not templated, not “DIY with a checklist” - we do the thinking, writing, and mapping for you."
-    },
-    {
-      q: "I don’t want to deal with marketing or funnels—will I have to?",
-      a: "Not at all. We manage everything—from building your list to ads, copy, and funnels. You focus on content and your product."
-    }
-  ]
+  const [open, setOpen] = useState<number | null>(null);
 
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
+  function toggle(i: number) {
+    setOpen(open === i ? null : i);
   }
 
   return (
-    <section className="py-32 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section id="faq" className="section" style={{ background: '#fff' }}>
+      <div className="container">
+        <div style={{ maxWidth: 580, marginBottom: 48 }}>
+          <p className="eyebrow">Questions</p>
+          <h2 className="section-title">Frequently Asked Questions</h2>
+        </div>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
-          Wait, I’ve Got Questions
-        </h2>
-
-        <div className="space-y-4">
-
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-white/10 rounded-xl bg-white/[0.03]"
-            >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex justify-between items-center text-left p-6"
-              >
-                <span className="font-semibold text-lg">
-                  Q: {faq.q}
-                </span>
-
-                <ChevronDown
-                  className={`transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
+        <div
+          className="faq-grid"
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}
+        >
+          {faqs.map((faq, i) => {
+            const isOpen = open === i;
+            return (
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96 p-6 pt-0" : "max-h-0"
-                }`}
+                key={i}
+                style={{
+                  background: 'var(--cream)',
+                  borderRadius: 'var(--radius)',
+                  border: `1.5px solid ${isOpen ? 'var(--teal)' : 'var(--border)'}`,
+                  overflow: 'hidden',
+                  transition: 'border-color 0.2s',
+                }}
               >
-                <p className="text-gray-400 leading-relaxed">
-                  A: {faq.a}
-                </p>
+                <button
+                  onClick={() => toggle(i)}
+                  style={{
+                    width: '100%', background: 'none', border: 'none',
+                    padding: '18px 20px',
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    cursor: 'pointer',
+                    fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500,
+                    color: 'var(--dark)', textAlign: 'left', gap: 12,
+                  }}
+                >
+                  <span>{faq.q}</span>
+                  <span style={{
+                    width: 22, height: 22, flexShrink: 0,
+                    borderRadius: '50%',
+                    border: `1.5px solid ${isOpen ? 'var(--teal)' : 'var(--border)'}`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 16, color: 'var(--teal)',
+                    transition: 'transform 0.25s',
+                    transform: isOpen ? 'rotate(45deg)' : 'none',
+                    lineHeight: 1,
+                  }}>
+                    +
+                  </span>
+                </button>
+                <div style={{
+                  fontSize: 13, color: 'var(--gray)', lineHeight: 1.75,
+                  padding: isOpen ? '0 20px 18px' : '0 20px',
+                  maxHeight: isOpen ? 400 : 0,
+                  overflow: 'hidden',
+                  transition: 'max-height 0.35s ease, padding 0.35s ease',
+                }}>
+                  {faq.a}
+                </div>
               </div>
-            </div>
-          ))}
-
+            );
+          })}
         </div>
-
-        {/* CTA */}
-        <div className="text-center mt-20">
-          <a
-            href="#apply"
-            className="inline-block bg-brand text-black px-10 py-5 rounded-xl font-semibold
-            shadow-[0_0_40px_rgba(16,185,129,0.4)]
-            hover:shadow-[0_0_60px_rgba(16,185,129,0.6)]
-            transition"
-          >
-            Yes, I’m Ready To Scale
-          </a>
-
-          <p className="text-gray-500 mt-3 text-sm">
-            Only 1 Spot Available Each Month
-          </p>
-        </div>
-
       </div>
+
+      <style>{`
+        @media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
-  )
+  );
 }

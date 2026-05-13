@@ -1,27 +1,29 @@
-import About from '@/components/About'
+import HowItWorks from '@/components/HowItWorks'
+import Navbar from '@/components/Navbar2'
+import Pricing from '@/components/Pricing'
+import Services from '@/components/Services'
+import Stats from '@/components/Stats'
+import Benefits from '@/components/Benefits'
+import Hero from '@/components/Hero2'
 import FAQ from '@/components/FAQ'
 import FinalCTA from '@/components/FinalCTA'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
-import Paths from '@/components/Paths'
-import Problem from '@/components/Problem'
-import TwoOptions from '@/components/TwoOptions'
-import WhoWeWorkWith from '@/components/WhoWeWorkWith'
+import About from '@/components/AboutUs'
+import Footer from '@/components/Footer2'
 import React from 'react'
 
 const page = () => {
   return (
     <>
-    <Header/>
-    <Hero/>
-    <Problem/>
-    <TwoOptions/>
-    <Paths/>
-    <WhoWeWorkWith/>
-    <About/>
-    <FAQ/>
-    <FinalCTA/>
+    <Navbar />
+      <Hero />
+      <Benefits/>
+      <HowItWorks/>
+      <Stats/>
+      <Services/>
+      <Pricing/>
+      <About/>
+      <FAQ/>
+      <FinalCTA/>
     <Footer/>
     </>
   )
